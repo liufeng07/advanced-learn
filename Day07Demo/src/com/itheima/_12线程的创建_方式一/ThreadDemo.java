@@ -44,9 +44,11 @@ class MyThread extends Thread{
     // 2.重写run()方法
     @Override
     public void run() {
-        // 线程的执行方法。
-        for(int i = 0 ; i < 100 ; i++ ){
-            System.out.println("子线程输出："+i);
+        synchronized (this) {
+            // 线程的执行方法。
+            for (int i = 0; i < 100; i++) {
+                System.out.println("子线程输出：" + i);
+            }
         }
     }
 }
