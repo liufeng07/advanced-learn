@@ -1,5 +1,6 @@
 package com.itfeng.controller;
 
+import com.itfeng.service.TestThreadPoolService;
 import com.itfeng.utils.GenerateIdUtils;
 import com.itfeng.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -20,11 +21,25 @@ public class MainTestController {
     private GenerateIdUtils generateIdUtil;
     @Autowired
     private RedisUtil redisUtil;
+    @Autowired
+    private TestThreadPoolService threadPoolService;
 
+    /**
+     * 生成订单号
+     */
     @PostMapping(  "/generateIds")
     public Object generateIds() {
         String s = generateIdUtil.generateId();
         System.out.println(s);
         return s;
+    }
+    /**
+     * 测试异步线程池
+     */
+    @PostMapping("/asynThreadPool")
+    public void asynThreadPool() {
+        for (int i = 0; i < 200; i++) {
+            threadPoolService.test();;
+        }
     }
 }
