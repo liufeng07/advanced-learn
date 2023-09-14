@@ -1,9 +1,6 @@
 package com.itheima._14Collection集合的概述;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
+import java.util.*;
 
 /**
     目标：Collection集合概述。
@@ -67,6 +64,19 @@ public class CollectionDemo01 {
         lists.add("MySQL");
         // [MyBatis, Java, Java, Spring, MySQL, MySQL]
         System.out.println(lists);
+
+        //set 无索引，不能用普通for循环去进行遍历
+        Set<String> strings = new HashSet<>();
+        strings.add("22");
+        strings.add("33");
+        for (int i = 0; i < strings.size(); i++) {
+        }
+        //list有索引，可以用普通的for循环进行遍历
+        List<String> strings1 = new ArrayList<>();
+        strings1.add("22222");
+        for (int i = 0; i < strings1.size(); i++) {
+            System.out.println(strings1.get(1));
+        }
 
     }
 }

@@ -1,0 +1,60 @@
+#服务器端口
+server:
+  port: 8888
+
+
+#日志使用ELK
+logging:
+    isUseELK: TRUE
+    logstashHost: 127.0.0.1:4560
+    level:
+        org.elasticsearch: ERROR
+        org.springframework.boot.actuate.elasticsearch: ERROR
+
+spring:
+  #配置ElasticSearch连接
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 127.0.0.1:9300
+      repositories:
+        enabled: true
+ #指定es服务器访问url
+ elasticsearch:
+   rest:
+     uris: ["http://127.0.0.1:9200"]
+
+  redis:
+    ##redis 单机环境配置
+    host:  192.168.0.66
+    port: 6379
+    password: '2020@conlin360.com'
+    database: 0
+    ssl: false
+    ##redis 集群环境配置
+    #cluster:
+    #  nodes: 127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003
+    #  commandTimeout: 5000
+  rabbitmq:
+    host: 192.168.0.66
+    port: 5672
+    username: admin
+    password: admin
+    # 打开生产者消息确认机制
+    # 设置服务器收到消息确认回调(producer-> exchange)
+    publisher-confirms: true
+    # 设置服务端正确将消息传到队列的确认回调(exchange -> queue)
+    publisher-returns: true
+    # 设置开启Mandatory，如果消息没路由到队列，则返回给消息发送方（如果不开启，默认丢弃消息）
+    template:
+      mandatory: true
+    # 指定库
+    virtual-host: /
+    listener:
+      simple:
+        #开启消费端手动确认
+        acknowledge-mode: manual
+        #指定最小的消费者数量
+        concurrency: 1
+        #指定最大的消费者数量
+        max-concurrency: 10

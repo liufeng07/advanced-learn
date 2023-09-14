@@ -1,8 +1,11 @@
 package com.itfeng.antic.thread;
 
+import com.itfeng.antic.oom.stackError.entity.count;
+
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author liuf
@@ -28,12 +31,13 @@ public class ConcurrentTest {
             executor.execute(new Runnable() {
                 @Override
                 public void run() {
-                    //System.out.println(Thread.currentThread().getName());
+                    System.out.println(Thread.currentThread().getName()+"执行开始");
                     demo.count++; // i++不具备原子性 读取i的值，加1，再写会主内存是三步操作
+                    System.out.println(Thread.currentThread().getName() + "执行结束");
                 }
             });
         }
-        //保证线程池执行完毕
+        //保证线程池执行完毕 线程阻塞
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

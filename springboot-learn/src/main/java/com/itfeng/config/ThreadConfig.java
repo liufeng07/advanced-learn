@@ -18,6 +18,7 @@ public class ThreadConfig {
     //暂时默认线程池大小为10。最大线程池大小为20、线程存活时间为1分钟、线程池队列大小默认为200(先进先出)、拒绝策略为CallerRunsPolicy(放到调用者线程执行)
     @Bean("taskExecutor")
     public Executor taskExecutor() {
+        //使用new ThreadPoolTaskExecutor实例，这样的处理方式让写的人更清楚明确的线程池的运行规则，避免资源耗尽的风险。
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(10);
         executor.setMaxPoolSize(20);

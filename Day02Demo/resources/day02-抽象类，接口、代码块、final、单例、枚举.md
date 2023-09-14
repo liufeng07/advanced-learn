@@ -1092,7 +1092,7 @@ enum Sex {
     BOY, GIRL; // 男，女
 }
 
-// 枚举的本质是一个类，我们刚才定义的Sex枚举相当于下面的类
+// 枚举的本质是一个类，我们刚才定义的Sex枚举相当于下面的类 本质是列举对象
 final class SEX extends java.lang.Enum<SEX> {
     public static final SEX BOY = new SEX();
     public static final SEX GIRL = new SEX();

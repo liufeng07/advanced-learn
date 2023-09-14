@@ -15,8 +15,9 @@ public class ThreadPoolByNewSingleThreadExecutor {
         /**
          * 单线程化的线程池
          */
-        //创建一个线程池 执行10次任务
+        //创建一个线程池
         ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
+        //创建10个线程
         for (int i = 0; i < 10; i++) {
             final int index = i;
             singleThreadExecutor.execute(new Runnable() {

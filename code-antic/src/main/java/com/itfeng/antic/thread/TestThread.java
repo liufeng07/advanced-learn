@@ -1,4 +1,4 @@
-package com.itfeng.antic.base;
+package com.itfeng.antic.thread;
 
 /**
  * @author liuf

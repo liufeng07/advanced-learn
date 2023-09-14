@@ -1,13 +1,22 @@
 package com.itfeng.controller;
 
+import com.itfeng.common.R;
 import com.itfeng.service.TestThreadPoolService;
+import com.itfeng.utils.FTPUtil;
 import com.itfeng.utils.GenerateIdUtils;
 import com.itfeng.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author liuf
