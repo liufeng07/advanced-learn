@@ -21,9 +21,7 @@ public class CompletableFutureTest {
         param.put("deviceNumber", "12");
         params.add(param);
         rpcDto.put("params", params);
-
         Map<String, Boolean> res = new LinkedHashMap<>();
-
         List<CompletableFuture<Map<String, Integer>>> futures = new ArrayList<>();
         for (int i = 0; i < 1; i++) {
             CompletableFuture<Map<String, Integer>> future = CompletableFuture.supplyAsync(
@@ -34,8 +32,7 @@ public class CompletableFutureTest {
                             e.printStackTrace();
                         }
                         HashMap<String, Integer> stringIntegerHashMap = new HashMap<>();
-                        stringIntegerHashMap.put("age",20);
-
+                        stringIntegerHashMap.put("age", 20);
                         return stringIntegerHashMap;
                     }
             );
@@ -46,24 +43,16 @@ public class CompletableFutureTest {
             futures.add(future);
         }
         CompletableFuture<Void> combinedFutures = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
-
         combinedFutures.thenAccept(r ->
                 System.out.println("combinedFuture accepted")
         );
-
         combinedFutures.whenComplete((v, th) -> {
             System.out.println("all completed");
-            System.out.println(v);
+            System.out.println("v:" + v);
         }).join();
-
-
         System.out.println(res);
-
         System.out.println("watting...");
         Thread.sleep(10);
-
         System.out.println(res);
     }
-
-
 }
